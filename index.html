@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Normativas | Zarpe RP</title>
+    <style>
+        /* Estilo azul con burbujas y aura */
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #121212;
+            color: #e0e0e0;
+            display: flex;
+            height: 100vh;
+        }
+        .container {
+            display: flex;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+        aside.sidebar {
+            background-color: #0a1626; /* azul muy oscuro */
+            width: 280px;
+            padding: 20px;
+            box-sizing: border-box;
+            overflow-y: auto;
+            border-right: 1px solid #12243a;
+        }
+        aside.sidebar h1 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #3fa9f5; /* azul brillante */
+            text-align: center;
+        }
+        aside.sidebar nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        aside.sidebar nav ul li {
+            background-color: #1b2e4b; /* burbuja azul oscuro */
+            padding: 12px 18px;
+            margin-bottom: 12px;
+            border-radius: 30px;
+            cursor: pointer;
+            color: #cfdff7;
+            font-weight: 500;
+            user-select: none;
+            position: relative;
+            transition:
+                box-shadow 0.3s ease,
+                background-color 0.3s ease,
+                color 0.3s ease,
+                transform 0.2s ease;
+        }
+        aside.sidebar nav ul li:hover {
+            background-color: #3fa9f5;
+            color: #121212;
+            box-shadow: 0 0 12px 3px rgba(63,169,245,0.7);
+            transform: scale(1.05);
+        }
+        aside.sidebar nav ul li.active {
+            background-color: #3fa9f5;
+            color: #121212;
+            font-weight: 700;
+            box-shadow: 0 0 16px 5px rgba(63,169,245,0.85);
+            transform: scale(1.08);
+        }
+        main.content {
+            flex-grow: 1;
+            padding: 30px 40px;
+            overflow-y: auto;
+        }
+        main.content section {
+            display: none;
+            max-width: 900px;
+        }
+        main.content section.active {
+            display: block;
+        }
+        h2 {
+            color: #3fa9f5;
+            margin-top: 0;
+        }
+        h3 {
+            margin-bottom: 0.3em;
+            margin-top: 1.2em;
+            color: #76b3ff;
+        }
+        ul {
+            margin-top: 0.3em;
+            margin-left: 1.2em;
+        }
+        ul li {
+            margin-bottom: 0.5em;
+        }
+        p {
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <h1>⚓ Zarpe RP</h1>
+            <nav>
+                <ul>
+                    <li data-section="basicos" class="active">📘 Normativas Básicas</li>
+                    <li data-section="general">📜 Normativa General</li>
+                    <li data-section="policial">👮 Normativa Policial</li>
+                    <li data-section="delictiva">🔫 Normativa Delictiva</li>
+                    <li data-section="ck">💀 Normativa Oficial de CK (Character Kill)</li>
+                </ul>
+            </nav>
+        </aside>
+        <main class="content">
+            <section id="basicos" class="section active">
+                <h2>📘 Normativas Básicas – Zarpe RP</h2>
+                <p>
+                    Las Normativas Básicas son el conjunto de reglas fundamentales que todo jugador debe conocer y respetar desde el ingreso al servidor. Estas normas buscan asegurar un ambiente de juego seguro, respetuoso y con una experiencia de rol coherente para todos los participantes. El incumplimiento puede acarrear sanciones severas.
+                </p>
+
+                <h3>⚠️ 1. Respeto y conducta</h3>
+                <ul>
+                    <li>Está terminantemente prohibido el acoso, discriminación o cualquier tipo de conducta tóxica hacia otros jugadores o miembros del staff, ya sea en canales IC (in character) u OOC (out of character).</li>
+                    <li>No se permiten insultos, lenguaje ofensivo, amenazas o burlas que afecten la experiencia de juego.</li>
+                    <li>Los conflictos personales deben manejarse fuera del servidor y sin afectar el rol.</li>
+                    <li>El staff debe ser respetado y sus decisiones acatadas en todo momento.</li>
+                </ul>
+
+                <h3>🛑 2. Prohibición de cheats, hacks y exploits</h3>
+                <ul>
+                    <li>Prohibido el uso de cualquier tipo de software externo que modifique el juego para obtener ventajas, como aimbots, wallhacks, macros o cualquier tipo de trampa.</li>
+                    <li>Se prohíbe el aprovechamiento de bugs o fallos del servidor para beneficio personal (explotar glitches, duplicar objetos o dinero).</li>
+                    <li>Ante la detección de bugs, el jugador debe reportarlo inmediatamente al staff mediante el canal oficial (ticket).</li>
+                    <li>El uso de mods no autorizados que alteren mecánicas o ventajas está prohibido.</li>
+                </ul>
+
+                <h3>💬 3. Uso adecuado de canales de comunicación</h3>
+                <ul>
+                    <li>El chat IC debe usarse exclusivamente para comunicación dentro del rol. Está prohibido escribir mensajes fuera de rol o spam en este canal.</li>
+                    <li>El chat OOC está destinado para comunicación fuera de rol, dudas o información general, siempre con respeto y sin interferir en la inmersión.</li>
+                    <li>Se prohíbe el uso de lenguaje ofensivo, flood, spam o publicidad en cualquier canal.</li>
+                    <li>La información obtenida en canales OOC no debe utilizarse para ventajas dentro del rol.</li>
+                </ul>
+
+                <h3>🎭 4. Mantener la coherencia y seriedad en el rol</h3>
+                <ul>
+                    <li>Los personajes deben interpretarse de manera coherente con su historia, habilidades y contexto.</li>
+                    <li>No se permite realizar acciones absurdas, imposibles o que rompan la inmersión (por ejemplo, saltos irrealistas, resistir disparos sin consecuencias).</li>
+                    <li>El jugador debe justificar sus decisiones con base en la narrativa del personaje.</li>
+                    <li>Romper personaje (break character) solo se permite en casos excepcionales o emergencias, y siempre en canales adecuados.</li>
+                </ul>
+
+                <h3>🚫 5. Acciones prohibidas específicas</h3>
+                <ul>
+                    <li>Combat logging: desconectarse para evitar consecuencias dentro del rol, como arrestos o muertes.</li>
+                    <li>Powergaming: forzar acciones sin dar opción a respuesta lógica o rol a otros jugadores.</li>
+                    <li>Metagaming: usar información obtenida fuera del rol para beneficio en el juego.</li>
+                    <li>Random Deathmatch (RDM): atacar o matar a otros jugadores sin un motivo justificado dentro del rol.</li>
+                    <li>Vehicle Deathmatch (VDM): usar vehículos para causar daño o matar sin contexto o justificación de rol.</li>
+                    <li>Abuso de bugs o glitches para ganar combates o ventajas económicas.</li>
+                    <li>Griefing constante: molestar reiteradamente a otros jugadores sin un motivo de rol válido.</li>
+                    <li>Spawn killing: matar a jugadores repetidamente en zonas de aparición sin contexto válido.</li>
+                    <li>Roleplay forzado o abusivo que dañe la experiencia de otros.</li>
+                    <li>Uso inapropiado o abuso de reportes falsos.</li>
+                </ul>
+
+                <h3>📂 6. Reportes y sanciones</h3>
+                <ul>
+                    <li>Los reportes deben realizarse únicamente por los canales oficiales, aportando evidencia clara (capturas, videos o grabaciones).</li>
+                    <li>El abuso en los reportes o denuncias falsas será sancionado.</li>
+                    <li>El staff se reserva el derecho de sancionar según la gravedad de la falta, que puede ir desde advertencias hasta expulsiones permanentes.</li>
+                </ul>
+
+                <h3>📌 Importante</h3>
+                <p>
+                    El desconocimiento de estas normas no es excusa para infringirlas. La administración se reserva el derecho de tomar medidas para preservar la calidad y el orden en el servidor.
+                </p>
+            </section>
+
+            <section id="general" class="section">
+                <h2>📜 Normativa General – Zarpe RP</h2>
+                <p>
+                    La Normativa General establece las reglas esenciales para el correcto funcionamiento del servidor, manteniendo un ambiente de rol serio, justo y respetuoso. Su objetivo es garantizar que todas las interacciones dentro del servidor se desarrollen bajo principios claros de coherencia, respeto y juego limpio.
+                </p>
+
+                <h3>⚠️ 1. Respeto y convivencia</h3>
+                <ul>
+                    <li>Todo jugador debe mantener una actitud respetuosa hacia otros jugadores, miembros del staff y el servidor en general.</li>
+                    <li>Se prohíbe el acoso, discriminación, insultos, amenazas, lenguaje ofensivo, o cualquier comportamiento tóxico, ya sea dentro o fuera del rol.</li>
+                    <li>El staff debe ser respetado y sus decisiones deben acatarse sin cuestionamientos públicos.</li>
+                    <li>Cualquier conflicto personal debe resolverse fuera del servidor para no afectar la experiencia de rol.</li>
+                </ul>
+
+                <h3>🎭 2. Coherencia en el rol y seriedad</h3>
+                <ul>
+                    <li>Los jugadores deben interpretar a sus personajes de forma coherente, respetando su historia, personalidad y habilidades.</li>
+                    <li>Está prohibido realizar acciones imposibles o absurdas que rompan la inmersión, como resistir disparos sin consecuencias o realizar hazañas sobrenaturales sin justificación.</li>
+                    <li>El rol debe desarrollarse con seriedad, evitando actitudes que menoscaben la experiencia de otros jugadores.</li>
+                </ul>
+
+                <h3>🚫 3. Powergaming (PG)</h3>
+                <ul>
+                    <li>Prohibido forzar acciones que no pueden ser resistidas o evitadas razonablemente por otros jugadores.</li>
+                    <li>Ejemplos: esquivar todos los tiros sin posibilidad de fallo, inmovilizar a alguien sin darle opción a reaccionar, levantarse instantáneamente tras ser herido gravemente.</li>
+                    <li>No se debe imponer el rol a otros jugadores sin su consentimiento o interacción previa.</li>
+                </ul>
+
+                <h3>🛑 4. Metagaming (MG)</h3>
+                <ul>
+                    <li>Se prohíbe usar información obtenida fuera del rol (por chats OOC, Discord, streams, etc.) para beneficio dentro del rol.</li>
+                    <li>Ejemplos: conocer la ubicación de un jugador por conversación OOC para atacarlo, usar datos de un stream para emboscadas, alertar sobre roles basados en información externa.</li>
+                    <li>La información que posee el jugador no siempre coincide con la que posee su personaje.</li>
+                </ul>
+
+                <h3>🔫 5. Random Deathmatch (RDM)</h3>
+                <ul>
+                    <li>Matar o atacar sin motivo válido dentro del rol está prohibido.</li>
+                    <li>Debe existir un conflicto, trama o justificación narrativa para permitir un ataque.</li>
+                    <li>Atacar a jugadores sin interacción previa o en zonas seguras se considera RDM y será sancionado.</li>
+                </ul>
+
+                <h3>🚗 6. Vehicle Deathmatch (VDM)</h3>
+                <ul>
+                    <li>Usar vehículos para causar daño o matar sin justificación o contexto de rol es prohibido.</li>
+                    <li>Excepciones: legítima defensa, situaciones autorizadas o rol pactado.</li>
+                    <li>Atropellar de forma intencional y sin contexto es sancionado.</li>
+                </ul>
+
+                <h3>🧟‍♂️ 7. Combat Logging y desconexiones antirrol</h3>
+                <ul>
+                    <li>Está prohibido desconectarse intencionalmente para evitar arrestos, muertes, robos u otras consecuencias dentro del rol.</li>
+                    <li>El combat logging afecta negativamente la experiencia y rompe la coherencia del rol.</li>
+                    <li>El staff tomará medidas severas contra quienes lo practiquen.</li>
+                </ul>
+
+                <h3>🏛 8. Respeto a la jerarquía y estructura de facciones</h3>
+                <ul>
+                    <li>Los miembros de facciones legales e ilegales deben respetar la cadena de mando.</li>
+                    <li>Ignorar órdenes sin justificación válida dentro del rol es sancionable.</li>
+                    <li>Los conflictos internos deben manejarse con madurez y en rol, sin afectar el juego de terceros.</li>
+                </ul>
+
+                <h3>🛠 9. Uso adecuado de vehículos, armas y equipamiento</h3>
+                <ul>
+                    <li>El uso de armas y vehículos debe estar justificado por la situación y el contexto de rol.</li>
+                    <li>No se permite abusar de vehículos o armas para dominar situaciones sin consecuencias narrativas.</li>
+                    <li>El almacenamiento y uso de vehículos y armas ilegales debe estar relacionado con la historia de tu personaje.</li>
+                </ul>
+
+                <h3>💰 10. Economía y comercio</h3>
+                <ul>
+                    <li>Queda prohibida la duplicación de objetos, dinero o recursos mediante bugs o exploits.</li>
+                    <li>No se permite la compra-venta de cuentas, objetos o dinero por fuera del servidor o por dinero real (RMT).</li>
+                    <li>El lavado de dinero o bienes debe tener justificación coherente y rol asociado.</li>
+                    <li>Cualquier comercio ilícito sin rol adecuado será sancionado.</li>
+                </ul>
+
+                <h3>📡 11. Uso correcto de canales y comunicaciones</h3>
+                <ul>
+                    <li>El chat IC se usa solo para comunicación dentro del rol.</li>
+                    <li>El chat OOC y canales específicos son para comunicación fuera de rol, dudas o información general.</li>
+                    <li>Está prohibido el spam, flood, lenguaje ofensivo o publicidad en cualquier canal.</li>
+                    <li>La radio y otros medios de comunicación en rol deben usarse de forma realista y coherente.</li>
+                </ul>
+
+                <h3>🎉 12. Eventos y situaciones especiales</h3>
+                <ul>
+                    <li>Eventos a gran escala (asaltos masivos, secuestros, tiroteos, CK) deben ser aprobados previamente por el staff.</li>
+                    <li>Cualquier rol especial que afecte a múltiples jugadores requiere autorización para evitar abusos.</li>
+                    <li>Saltarse esta regla puede causar sanciones severas.</li>
+                </ul>
+
+                <h3>📂 13. Reportes y denuncias</h3>
+                <ul>
+                    <li>Los reportes deben hacerse por canales oficiales y aportar evidencia clara (videos, capturas, audios).</li>
+                    <li>El staff no actúa ante acusaciones sin pruebas.</li>
+                    <li>El abuso o falsedad en reportes será sancionado.</li>
+                    <li>Para apelar sanciones se debe usar el canal oficial con toda la información requerida.</li>
+                </ul>
+
+                <h3>📌 14. Consecuencias y sanciones</h3>
+                <ul>
+                    <li>El incumplimiento de estas normas puede acarrear desde advertencias hasta expulsiones permanentes, dependiendo de la gravedad.</li>
+                    <li>El staff evaluará cada caso individualmente, considerando pruebas y contexto.</li>
+                    <li>Reincidencias o faltas graves serán sancionadas con expulsiones definitivas.</li>
+                </ul>
+
+                <p>
+                    <strong>Importante:</strong> Estas reglas son la base de Zarpe RP y buscan proteger la integridad y calidad del rol para todos los jugadores. Su cumplimiento es obligatorio para garantizar una experiencia justa, divertida y coherente.
+                </p>
+            </section>
+
+            <section id="policial" class="section">
+                <h2>👮 Normativa Policial – Zarpe RP</h2>
+<p>
+    La Normativa Policial está destinada a regular el comportamiento, responsabilidades y procedimientos de todos los miembros de las fuerzas del orden en Zarpe RP. Esta normativa garantiza que el rol policial se desarrolle con profesionalismo, seriedad y respeto, siendo fundamental para mantener el equilibrio, la justicia y la coherencia en el servidor.
+</p>
+
+<h3>⚠️ 1. Profesionalismo y Conducta dentro y fuera del Rol</h3>
+<ul>
+    <li>Los oficiales de policía deben mantener un comportamiento ejemplar, respetuoso y profesional en todo momento.</li>
+    <li>Queda estrictamente prohibido el abuso de autoridad, favoritismos, corrupción, o conductas tóxicas hacia jugadores o compañeros.</li>
+    <li>El respeto a la jerarquía, las órdenes legítimas y las reglas internas es obligatorio para mantener la disciplina.</li>
+    <li>Los conflictos personales deben manejarse fuera del servidor para no afectar el rol ni la imagen de la institución.</li>
+</ul>
+
+<h3>📋 2. Procedimientos Policiales y Uso de la Fuerza</h3>
+<ul>
+    <li>Todos los procedimientos (arrestos, registros, interrogatorios) deben realizarse siguiendo las normativas y protocolos oficiales establecidos por el servidor.</li>
+    <li>Las detenciones deben estar fundamentadas en evidencia sólida o rol previo.</li>
+    <li>El uso de la fuerza debe ser proporcional, justificable y documentado, evitando abusos o excesos.</li>
+    <li>Los oficiales deben redactar partes, reportes o informes de forma clara, precisa y coherente.</li>
+</ul>
+
+<h3>🔍 3. Rol de Investigación, Persecución y Colaboración</h3>
+<ul>
+    <li>Las investigaciones deben basarse en evidencia, pistas y desarrollo de rol, evitando el uso de información externa (metagaming).</li>
+    <li>Las persecuciones y arrestos deben desarrollarse con coherencia, permitiendo la interacción realista entre sospechosos y oficiales.</li>
+    <li>Se debe promover la cooperación con otras facciones y roles para fortalecer la narrativa y dinámica del servidor.</li>
+</ul>
+
+<h3>🚓 4. Uso de Equipamiento y Vehículos Policiales</h3>
+<ul>
+    <li>El equipamiento y vehículos policiales deben utilizarse exclusivamente para fines oficiales y en contexto de rol.</li>
+    <li>Está prohibido el uso indebido, como usar vehículos para acosar jugadores o para obtener ventajas ilegítimas.</li>
+    <li>El manejo de vehículos policiales debe respetar las normas de tránsito y seguridad dentro del rol.</li>
+</ul>
+
+<h3>📢 5. Reportes, Sanciones y Responsabilidad</h3>
+<ul>
+    <li>Cualquier abuso, conducta inapropiada o violación de la normativa policial debe ser reportada formalmente con evidencia.</li>
+    <li>El staff investigará cada caso con rigurosidad y aplicará las sanciones necesarias para preservar la integridad del rol policial.</li>
+    <li>El compromiso, la seriedad y la profesionalidad son fundamentales para garantizar un ambiente de juego justo y respetuoso.</li>
+</ul>
+
+<p>
+    <strong>Conclusión:</strong> El rol policial es esencial para mantener el equilibrio en Zarpe RP. Se espera que cada jugador que asuma este rol lo haga con dedicación, responsabilidad y un compromiso genuino hacia la calidad del servidor y la experiencia de todos sus usuarios.
+</p>
+
+            </section>
+
+            <section id="delictiva" class="section">
+                <h2>🔫 Normativa Delictiva – Zarpe RP</h2>
+<p>
+    La Normativa Delictiva en Zarpe RP está diseñada para regular todas las actividades ilegales que los jugadores pueden desempeñar dentro del servidor, asegurando que el rol delictivo se realice de forma seria, coherente y respetando la experiencia de todos los participantes. El objetivo es fomentar un entorno donde el rol criminal tenga sentido narrativo y no se convierta en un motivo de conflicto o frustración entre jugadores.
+</p>
+
+<h3>⚠️ 1. Rol Delictivo con Responsabilidad y Coherencia</h3>
+<ul>
+    <li>El rol delictivo debe estar basado en una historia y motivación clara, que justifique las acciones ilegales dentro del contexto del servidor.</li>
+    <li>Se espera que los jugadores que participen en actividades delictivas mantengan un comportamiento respetuoso y eviten conductas abusivas o tóxicas.</li>
+    <li>Los crímenes deben tener consecuencias lógicas dentro del rol, respetando las interacciones con otras facciones, principalmente las fuerzas del orden.</li>
+    <li>Se recomienda planificar grandes eventos delictivos con anticipación y coordinar con el staff para evitar abusos o interrupciones en la experiencia de otros jugadores.</li>
+</ul>
+
+<h3>💥 2. Prohibiciones Específicas en Actividades Delictivas</h3>
+<ul>
+    <li><strong>Random Deathmatch (RDM):</strong> Está terminantemente prohibido atacar o matar a otros jugadores sin una causa válida o sin un desarrollo de rol previo que lo justifique. El RDM genera una experiencia negativa y rompe la inmersión del servidor.</li>
+    <li><strong>Explotación de Bugs y Glitches:</strong> No se permite usar fallos técnicos del servidor para facilitar robos, escapes o para obtener beneficios ilegítimos. Esto incluye la duplicación de objetos, vehículos o dinero.</li>
+    <li><strong>Powergaming:</strong> Prohibido forzar acciones sin dar la oportunidad al otro jugador de reaccionar o responder de forma lógica dentro del rol, como inmovilizar sin opción a defensa, esquivar tiros sin fallo posible o realizar acciones que violen la coherencia del personaje.</li>
+    <li><strong>Zonas Seguras:</strong> No se permite realizar actividades delictivas en áreas designadas como seguras, como hospitales, comisarías, zonas de spawn o propiedades privadas sin permiso.</li>
+    <li><strong>Abuso de Vehículos:</strong> Usar vehículos para causar daño intencionalmente sin contexto o para evitar ser detenido es prohibido.</li>
+</ul>
+
+<h3>🕵️‍♂️ 3. Interacción Activa con Roles Legales</h3>
+<ul>
+    <li>El rol delictivo debe tener un equilibrio con la labor policial y legal, generando un juego dinámico y realista.</li>
+    <li>Se espera que los jugadores delictivos consideren y respeten las respuestas y acciones de los oficiales de policía para mantener la coherencia.</li>
+    <li>Las persecuciones, arrestos, negociaciones y enfrentamientos deben desarrollarse con respeto y seriedad, permitiendo que ambos bandos tengan oportunidad de desempeñar su rol.</li>
+</ul>
+
+<h3>🚔 4. Uso de Armas y Violencia</h3>
+<ul>
+    <li>El uso de armas debe ser siempre justificado dentro del contexto del rol y conforme a la situación.</li>
+    <li>No se debe abusar del uso indiscriminado de la violencia para obtener ventajas injustas o interrumpir el rol de otros.</li>
+    <li>Se deben respetar las mecánicas de daño y consecuencias, evitando comportamientos irreales o abusivos.</li>
+</ul>
+
+<h3>📢 5. Reportes, Sanciones y Responsabilidad</h3>
+<ul>
+    <li>Los jugadores deben reportar cualquier incumplimiento de esta normativa a través de los canales oficiales, aportando evidencia clara y contundente.</li>
+    <li>El staff está autorizado para investigar y sancionar cualquier abuso, aplicando medidas que van desde advertencias hasta expulsiones permanentes, dependiendo de la gravedad.</li>
+    <li>El rol delictivo implica una gran responsabilidad y cualquier abuso puede afectar negativamente la experiencia de todo el servidor.</li>
+</ul>
+
+<p>
+    <strong>Conclusión:</strong> La normativa delictiva busca equilibrar la libertad de interpretar roles criminales con la necesidad de mantener una experiencia justa, inmersiva y respetuosa para todos los jugadores. Se espera que cada participante asuma su rol con madurez y compromiso.
+</p>
+
+            </section>
+
+            <section id="ck" class="section">
+                <h2>💀 Normativa Oficial de CK (Character Kill)</h2>
+                <p>
+                    Un CK (Character Kill) representa la muerte permanente de un personaje dentro del entorno de rol. Esta acción es irreversible y debe tratarse con la máxima seriedad y coherencia narrativa. A continuación, se detallan las normas que regulan esta acción:
+                </p>
+
+                <h3>⚠️ 1. Irreversibilidad del CK</h3>
+                <ul>
+                    <li>Una vez ejecutado un CK de manera válida, el personaje afectado no podrá ser utilizado nuevamente bajo ningún concepto.</li>
+                    <li>🔁 No existe regreso, resurrección ni continuación de historia por parte del personaje.</li>
+                </ul>
+
+                <h3>📝 2. Requisitos para solicitar un CK</h3>
+                <ul>
+                    <li>Debe existir un motivo de peso, coherente y bien fundamentado dentro del desarrollo del rol.</li>
+                    <li>La solicitud debe hacerse a través de un ticket.</li>
+                    <li>Se requiere aprobación del Staff o administración.</li>
+                    <li>Debe presentarse evidencia clara del conflicto y justificación narrativa.</li>
+                </ul>
+
+                <h3>🤝 3. Aprobación entre jugadores (CK pactado)</h3>
+                <ul>
+                    <li>El CK puede ser pactado entre ambos jugadores si así lo acuerdan para cerrar una trama.</li>
+                    <li>Debe haber prueba del consentimiento mutuo (screenshot o mensaje en canal autorizado).</li>
+                    <li>Aún así, debe ser aprobado por la administración antes de ejecutarse.</li>
+                </ul>
+
+                <h3>🧠 4. Prohibiciones y mal uso del CK</h3>
+                <p>🚫 No está permitido:</p>
+                <ul>
+                    <li>Usar CK como venganza OOC (fuera de rol).</li>
+                    <li>Ejecutar un CK sin desarrollo previo de conflicto.</li>
+                    <li>Hacer CK por motivos triviales o sin lógica narrativa.</li>
+                    <li>Aplicar CK a un personaje sin el consentimiento del Staff.</li>
+                </ul>
+
+                <h3>📂 5. Documentación del CK</h3>
+                <ul>
+                    <li>Todo CK deberá ser documentado con:
+                        <ul>
+                            <li>Video o capturas del rol completo.</li>
+                            <li>Justificación escrita.</li>
+                            <li>Confirmación de aprobación por parte del Staff.</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <h3>🔄 6. Consecuencias tras un CK</h3>
+                <ul>
+                    <li>El jugador deberá crear un nuevo personaje con nueva historia, nuevo entorno y sin relación alguna con su personaje anterior.</li>
+                    <li>Está prohibido utilizar información del personaje anterior para el nuevo.</li>
+                </ul>
+
+                <h3>📌 Importante:</h3>
+                <p>
+                    El CK es una herramienta narrativa poderosa y debe usarse con responsabilidad. Cualquier abuso será sancionado según la normativa general del servidor.
+                </p>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        // Script simple para cambiar secciones y marcar item activo
+        const menuItems = document.querySelectorAll('aside.sidebar nav ul li');
+        const sections = document.querySelectorAll('main.content section');
+
+        menuItems.forEach(item => {
+            item.addEventListener('click', () => {
+                // Remover active del menú
+                menuItems.forEach(i => i.classList.remove('active'));
+                // Poner active al clickeado
+                item.classList.add('active');
+
+                // Ocultar todas las secciones
+                sections.forEach(sec => sec.classList.remove('active'));
+
+                // Mostrar la sección correspondiente
+                const sectionId = item.getAttribute('data-section');
+                const sectionToShow = document.getElementById(sectionId);
+                if (sectionToShow) {
+                    sectionToShow.classList.add('active');
+                    // Scroll top para sección
+                    sectionToShow.scrollTop = 0;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
