@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Normativas | Zarpe RP</title>
+  <meta name="description" content="Normativas del servidor Zarpe RP - Delictiva, Policial, CK y generales" />
+
+  <style>
+    /* ========== RESET SIMPLE ========== */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html,body { height: 100%; }
+
+    /* ========== VARIABLES ========== */
+    :root{
+      --bg-1: #061026;
+      --bg-2: #062a4a;
+      --accent: #3fa9f5;
+      --accent-2: #76b3ff;
+      --glass: rgba(255,255,255,0.04);
+      --text: #e6f0ff;
+      --muted: #a9cbe9;
+      --card-bg: rgba(10,20,35,0.45);
+      --blur: 8px;
+    }
+
+    /* ========== BACKGROUND GRADIENT ANIMADO SUAVE ========== */
+    body{
+      font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      background: linear-gradient(120deg, var(--bg-1) 0%, #08213b 25%, var(--bg-2) 50%, #063b6a 75%, #021120 100%);
+      background-size: 400% 400%;
+      animation: slowGradient 18s ease infinite;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+
+    @keyframes slowGradient {
+      0%{ background-position: 0% 50%; }
+      50%{ background-position: 100% 50%; }
+      100%{ background-position: 0% 50%; }
+    }
+
+    /* ========== LAYOUT ========== */
+    .container {
+      display: flex;
+      width: 100%;
+      gap: 24px;
+      padding: 28px;
+    }
+
+    aside.sidebar {
+      width: 300px;
+      min-width: 220px;
+      background: linear-gradient(180deg, rgba(8,20,35,0.6), rgba(6,15,28,0.35));
+      border-radius: 16px;
+      padding: 18px;
+      box-shadow: 0 8px 30px rgba(4,10,25,0.6);
+      border: 1px solid rgba(127,178,255,0.06);
+      backdrop-filter: blur(var(--blur));
+      height: calc(100vh - 56px);
+      overflow: auto;
+      position: sticky;
+      top: 28px;
+    }
+
+    .brand {
+      display:flex;
+      align-items:center;
+      gap:12px;
+      margin-bottom: 14px;
+    }
+    .brand .logo {
+      width:48px;height:48px;border-radius:10px;
+      background: linear-gradient(135deg,var(--accent),var(--accent-2));
+      display:flex;align-items:center;justify-content:center;
+      font-weight:700;color:#021320;
+      box-shadow: 0 6px 18px rgba(63,169,245,0.18);
+    }
+    .brand h1 { font-size:1.15rem;color:var(--accent);letter-spacing:0.2px; }
+
+    nav.menu { margin-top:8px; }
+    nav.menu ul { list-style:none; display:flex;flex-direction:column; gap:10px; padding:6px; }
+    nav.menu li {
+      border-radius: 14px;
+      overflow: hidden;
+      transition: all .22s ease;
+    }
+    nav.menu button {
+      width:100%;
+      text-align:left;
+      border:0;
+      background: transparent;
+      color:var(--muted);
+      padding: 10px 14px;
+      font-weight:600;
+      display:flex;
+      gap:10px;
+      align-items:center;
+      cursor:pointer;
+      border-left: 3px solid transparent;
+    }
+    nav.menu button:hover {
+      color: #021320;
+      background: linear-gradient(90deg, rgba(63,169,245,0.12), rgba(118,179,255,0.05));
+      transform: translateX(6px);
+      box-shadow: 0 8px 26px rgba(63,169,245,0.06);
+    }
+    nav.menu button.active {
+      color: #021320;
+      background: linear-gradient(90deg, rgba(63,169,245,0.18), rgba(118,179,255,0.08));
+      font-weight:700;
+      border-left-color: var(--accent);
+      transform: translateX(6px);
+      box-shadow: 0 10px 36px rgba(63,169,245,0.12);
+    }
+
+    /* small helper */
+    .muted { color: var(--muted); font-size: .95rem; }
+
+    /* ========== MAIN CONTENT ========== */
+    main.content {
+      flex:1;
+      height: calc(100vh - 56px);
+      overflow:auto;
+      padding: 28px;
+      border-radius: 16px;
+      box-shadow: 0 8px 30px rgba(2,8,20,0.6);
+      background: linear-gradient(180deg, rgba(7,16,28,0.45), rgba(7,12,20,0.25));
+      border: 1px solid rgba(127,178,255,0.04);
+      backdrop-filter: blur(var(--blur));
+    }
+
+    .section {
+      max-width: 980px;
+      margin: 0 auto 28px auto;
+      padding: 22px;
+      border-radius: 12px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border: 1px solid rgba(255,255,255,0.02);
+      box-shadow: 0 6px 18px rgba(2,8,20,0.35);
+      opacity: 0;
+      transform: translateY(18px);
+      transition: all .6s cubic-bezier(.2,.9,.18,1);
+    }
+    .section.visible { opacity:1; transform: translateY(0); }
+
+    h2.section-title {
+      display:flex; align-items:center; gap:12px;
+      color: var(--accent);
+      font-size: 1.35rem;
+      margin-bottom: 12px;
+      position: relative;
+    }
+
+    /* aura + bubble around title */
+    .title-bubble {
+      padding: 10px 14px;
+      border-radius: 12px;
+      background: linear-gradient(90deg, rgba(63,169,245,0.06), rgba(118,179,255,0.03));
+      box-shadow: 0 6px 30px rgba(63,169,245,0.06), inset 0 1px 0 rgba(255,255,255,0.02);
+      border: 1px solid rgba(63,169,245,0.12);
+      transition: transform .35s ease, box-shadow .35s ease;
+    }
+    .title-bubble::after{
+      content: '';
+      position:absolute;
+      left:-18px; top:-18px;
+      width:120px;height:120px;
+      background: radial-gradient(circle at 30% 20%, rgba(63,169,245,0.06), transparent 20%),
+                  radial-gradient(circle at 70% 80%, rgba(118,179,255,0.05), transparent 25%);
+      filter: blur(18px);
+      z-index: -1;
+    }
+
+    /* paragraphs and lists */
+    .section p { color: var(--text); line-height:1.55; margin:10px 0; font-size:0.98rem; }
+    .section ul { margin: 10px 0 12px 18px; color: var(--muted); }
+    .section ul li { margin-bottom:8px; }
+
+    strong { color: var(--accent-2); }
+
+    /* small code inline */
+    code { background: rgba(255,255,255,0.03); padding: 3px 6px; border-radius:6px; color: #eaf6ff; font-family: monospace; }
+
+    /* ========== ANIMACIONES TITULOS AL APARECER ========== */
+    .fade-in {
+      opacity:0;
+      transform: translateY(14px) scale(.995);
+      transition: all .6s cubic-bezier(.2,.9,.18,1);
+    }
+    .fade-in.show {
+      opacity:1;
+      transform: translateY(0) scale(1);
+    }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 980px){
+      .container { flex-direction: column; padding: 18px; gap:18px; }
+      aside.sidebar { position: relative; width:100%; height:auto; top:unset; min-width:unset; }
+      main.content { height: auto; }
+    }
+
+    /* subtle scrollbar for desktop */
+    main.content::-webkit-scrollbar, aside.sidebar::-webkit-scrollbar { width:10px; height:10px; }
+    main.content::-webkit-scrollbar-thumb, aside.sidebar::-webkit-scrollbar-thumb {
+      background: linear-gradient(180deg, rgba(100,160,255,0.14), rgba(63,169,245,0.08));
+      border-radius: 8px;
+      border: 2px solid rgba(0,0,0,0.12);
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar" aria-label="Menú de navegación">
+      <div class="brand">
+        <div class="logo">ZR</div>
+        <div>
+          <h1>Zarpe RP</h1>
+          <div class="muted">Normativas &amp; Reglas</div>
+        </div>
+      </div>
+
+      <nav class="menu" role="navigation" aria-label="Secciones">
+        <ul>
+          <li><button class="nav-btn active" data-target="basicos">📘 Normativas Básicas</button></li>
+          <li><button class="nav-btn" data-target="general">📜 Normativa General</button></li>
+          <li><button class="nav-btn" data-target="policial">👮 Normativa Policial</button></li>
+          <li><button class="nav-btn" data-target="delictiva">🔫 Normativa Delictiva</button></li>
+          <li><button class="nav-btn" data-target="ck">💀 Normativa CK</button></li>
+        </ul>
+      </nav>
+
+      <div style="margin-top:18px; padding:12px; border-radius:10px; background: linear-gradient(90deg, rgba(63,169,245,0.03), rgba(118,179,255,0.02));">
+        <div class="muted" style="font-size:.9rem">Comando importante:</div>
+        <div style="margin-top:6px"><code>/911</code> — Envío de entornos</div>
+      </div>
+    </aside>
+
+    <main class="content" id="mainContent" tabindex="0">
+      <!-- ====== BASICOS ====== -->
+      <section id="basicos" class="section visible">
+        <h2 class="section-title"><span class="title-bubble">📘 Normativas Básicas – Zarpe RP</span></h2>
+        <div class="fade-in show">
+          <p>
+            Las Normativas Básicas son el conjunto de reglas fundamentales que todo jugador debe conocer y respetar desde el ingreso al servidor. Estas normas buscan asegurar un ambiente de juego seguro, respetuoso y con una experiencia de rol coherente para todos los participantes. El incumplimiento puede acarrear sanciones severas.
+          </p>
+
+          <h3 style="color:var(--accent-2); margin-top:12px">⚠️ 1. Respeto y conducta</h3>
+          <ul>
+            <li>Está terminantemente prohibido el acoso, discriminación o cualquier tipo de conducta tóxica hacia otros jugadores o miembros del staff, ya sea en canales IC (in character) u OOC (out of character).</li>
+            <li>No se permiten insultos, lenguaje ofensivo, amenazas o burlas que afecten la experiencia de juego.</li>
+            <li>Los conflictos personales deben manejarse fuera del servidor y sin afectar el rol.</li>
+            <li>El staff debe ser respetado y sus decisiones acatadas en todo momento.</li>
+          </ul>
+
+          <h3 style="color:var(--accent-2); margin-top:8px">🛑 2. Prohibición de cheats, hacks y exploits</h3>
+          <ul>
+            <li>Prohibido el uso de software externo que modifique el juego para obtener ventajas (aimbots, wallhacks, macros, etc.).</li>
+            <li>Se prohíbe el aprovechamiento de bugs o fallos del servidor para beneficio personal (duplicar objetos o dinero).</li>
+            <li>Ante la detección de bugs, el jugador debe reportarlo inmediatamente al staff mediante el canal oficial (ticket).</li>
+            <li>El uso de mods no autorizados que alteren mecánicas o ventajas está prohibido.</li>
+          </ul>
+
+          <h3 style="color:var(--accent-2); margin-top:8px">💬 3. Uso adecuado de canales de comunicación</h3>
+          <ul>
+            <li>El chat IC debe usarse exclusivamente para comunicación dentro del rol. Está prohibido escribir mensajes fuera de rol o spam en este canal.</li>
+            <li>El chat OOC está destinado para comunicación fuera de rol, dudas o información general, siempre con respeto.</li>
+            <li>Se prohíbe el uso de lenguaje ofensivo, flood, spam o publicidad en cualquier canal.</li>
+            <li>La información obtenida en canales OOC no debe utilizarse para ventajas dentro del rol.</li>
+          </ul>
+
+          <h3 style="color:var(--accent-2); margin-top:8px">🎭 4. Mantener la coherencia y seriedad en el rol</h3>
+          <ul>
+            <li>Los personajes deben interpretarse de manera coherente con su historia, habilidades y contexto.</li>
+            <li>No se permite realizar acciones absurdas, imposibles o que rompan la inmersión.</li>
+            <li>El jugador debe justificar sus decisiones con base en la narrativa del personaje.</li>
+            <li>Romper personaje (break character) solo se permite en casos excepcionales o emergencias, y siempre en canales adecuados.</li>
+          </ul>
+
+          <h3 style="color:var(--accent-2); margin-top:8px">🚫 5. Acciones prohibidas específicas</h3>
+          <ul>
+            <li>Combat logging: desconectarse para evitar consecuencias dentro del rol.</li>
+            <li>Powergaming: forzar acciones sin dar opción a respuesta lógica o rol a otros jugadores.</li>
+            <li>Metagaming: usar información externa para beneficio en el juego.</li>
+            <li>Random Deathmatch (RDM) y Vehicle Deathmatch (VDM).</li>
+            <li>Abuso de bugs o glitches para ganar combates o ventajas económicas.</li>
+            <li>Spawn killing y roleplay forzado que dañe la experiencia de otros.</li>
+          </ul>
+
+          <h3 style="color:var(--accent-2); margin-top:8px">📂 6. Reportes y sanciones</h3>
+          <ul>
+            <li>Los reportes deben realizarse por los canales oficiales, aportando evidencia clara (capturas, videos o grabaciones).</li>
+            <li>El abuso en los reportes o denuncias falsas será sancionado.</li>
+            <li>El staff se reserva el derecho de sancionar según la gravedad de la falta.</li>
+          </ul>
+
+          <p style="margin-top:10px"><strong>Importante:</strong> El desconocimiento de estas normas no es excusa para infringirlas.</p>
+        </div>
+      </section>
+
+      <!-- ====== GENERAL ====== -->
+      <section id="general" class="section">
+        <h2 class="section-title"><span class="title-bubble">📜 Normativa General – Zarpe RP</span></h2>
+        <div class="fade-in">
+          <p>
+            La Normativa General establece las reglas esenciales para el correcto funcionamiento del servidor, manteniendo un ambiente de rol serio, justo y respetuoso.
+          </p>
+
+          <h3 style="color:var(--accent-2); margin-top:12px">⚠️ 1. Respeto y convivencia</h3>
+          <ul>
+            <li>Todo jugador debe mantener una actitud respetuosa hacia otros jugadores, miembros del staff y el servidor en general.</li>
+            <li>Se prohíbe el acoso, discriminación, insultos, amenazas, lenguaje ofensivo, o cualquier comportamiento tóxico.</li>
+            <li>El staff debe ser respetado y sus decisiones deben acatarse sin cuestionamientos públicos.</li>
+          </ul>
+
+          <h3 style="color:var(--accent-2); margin-top:8px">🎭 2. Coherencia en el rol y seriedad</h3>
+          <ul>
+            <li>Los jugadores deben interpretar a sus personajes de forma coherente.</li>
+            <li>Está prohibido realizar acciones inmersivas sin justificación.</li>
+          </ul>
+
+          <h3 style="color:var(--accent-2); margin-top:8px">🚫 3. Powergaming (PG) y 🛑 4. Metagaming (MG)</h3>
+          <ul>
+            <li>Prohibido forzar acciones que no pueden ser resistidas razonablemente por otros jugadores.</li>
+            <li>No usar información OOC dentro del rol.</li>
+          </ul>
+
+          <h3 style="color:var(--accent-2); margin-top:8px">🔫 5. RDM &amp; 🚗 6. VDM</h3>
+          <ul>
+            <li>Matar o causar daño sin motivo justificado está prohibido. Excepciones: legítima defensa o rol autorizado.</li>
+          </ul>
+
+          <h3 style="color:var(--accent-2); margin-top:8px">📂 13. Reportes y denuncias</h3>
+          <ul>
+            <li>Los reportes deben hacerse por canales oficiales y aportar evidencia clara.</li>
+            <li>El staff no actúa ante acusaciones sin pruebas.</li>
+          </ul>
+
+          <p style="margin-top:10px"><strong>Importante:</strong> Estas reglas son la base de Zarpe RP y su cumplimiento es obligatorio.</p>
+        </div>
+      </section>
+
+      <!-- ====== POLICIAL ====== -->
+      <section id="policial" class="section">
+        <h2 class="section-title"><span class="title-bubble">👮 Normativa Policial – Zarpe RP</span></h2>
+        <div class="fade-in">
+          <p>La Normativa Policial regula el comportamiento y procedimientos de los miembros de las fuerzas del orden.</p>
+
+          <h3 style="color:var(--accent-2); margin-top:12px">⚠️ Profesionalismo y Conducta</h3>
+          <ul>
+            <li>Los oficiales deben mantener un comportamiento ejemplar y profesional en todo momento.</li>
+            <li>Queda prohibido el abuso de autoridad, favoritismos o corrupción.</li>
+            <li>El respeto a la jerarquía y las órdenes legítimas es obligatorio.</li>
+          </ul>
+
+          <h3 style="color:var(--accent-2); margin-top:8px">📋 Procedimientos y Uso de la Fuerza</h3>
+          <ul>
+            <li>Detenciones fundamentadas en evidencia y uso de fuerza proporcional.</li>
+            <li>Informes y partes claros y coherentes.</li>
+          </ul>
+
+          <p style="margin-top:10px"><strong>Conclusión:</strong> El rol policial es esencial para mantener el equilibrio en Zarpe RP.</p>
+        </div>
+      </section>
+
+      <!-- ====== DELICTIVA (REEMPLAZADA) ====== -->
+      <section id="delictiva" class="section">
+        <h2 class="section-title"><span class="title-bubble">🔫 Normativa Delictiva – Zarpe RP</span></h2>
+        <div class="fade-in">
+          <!-- Insertado texto completo que me enviaste -->
+          <h3>1. Normativa General (Delictiva).</h3>
+          <p><strong>Reinicio de servidor:</strong> Prohibido cometer actos delictivos 15 minutos antes y después de los reinicios programados.</p>
+          <p><strong>Presencia Policial:</strong> No se podrán realizar ningún tipo de delito sin la presencia de policías en servicio.</p>
+          <p><strong>Obligación de retirar dinero (ATM):</strong> No se puede forzar a ningún jugador a extraer dinero de un banco o cajero automático por medio de amenazas o rol agresivo.</p>
+          <p><strong>Uso indebido de vehículos de trabajo:</strong> Queda prohibido hacer uso de vehículos de trabajo o servicio públicos para la comisión de actos delictivos.</p>
+          <p><strong>Agresión a personal médico (EMS):</strong> Está completamente prohibido llevar a cabo roles agresivos contra un EMS cuando este se encuentre durante sus respectivas funciones de rol.</p>
+          <p><strong>Atracos durante la interacción con menú:</strong> Está prohibido atracar a un jugador mientras este se encuentra utilizando un menú de interacción, como ATM's, tiendas de ropa, comida y demás.</p>
+          <p><strong>Regreso a una zona de conflicto:</strong> Si un jugador ha sido abatido en un rol agresivo, no podrá regresar a la zona ni reincorporarse al conflicto hasta que hayan transcurrido al menos 20 minutos y que algun otro jugador le haya recordado los ocurrido antes de caer abatido.</p>
+          <p><strong>Cacheo a agentes de policía:</strong> Está completamente prohibido cachear y sustraer ítems policiales a agentes de policías bajo ninguna circunstancia. Excepto balas.(Balas es el único ítem permitido que se le puede sustraer a un policía)</p>
+          <p><strong>Falsificación de ID's (identidad) IC:</strong> No está permitido falsificar la documentación ID's de manera rol IC.</p>
+          <p><strong>Uso de animaciones:</strong> Prohibido el uso de animaciones en tiroteos o roles agresivos que sean beneficiosos para evadir la actividad.</p>
+          <p><strong>Roles justificados y fundamentados:</strong> No se permiten acciones criminales sin un motivo válido o coherente dentro del rol. La criminalidad debe tener sentido dentro del desarrollo de tu personaje y la situación.</p>
+          <p><strong>Valorar la vida del personaje (Fair RP):</strong> Si te apuntan con un arma o estás en una situación de peligro realista, debes reaccionar con miedo y valorar la vida de tu personaje.</p>
+          <p><strong>Uso correcto de las armas:</strong> No puedes portar un fusil de asalto sin una mochila que sea visible. No puedes sacar un arma grande de la nada (Ejemplo: Sacar una AK-47 del bolsillo sin rol previo).</p>
+          <p><strong>Armas autorizadas:</strong> Esta permitido en ciudad armas de bala 9mm, en parte norte armas largas, a la hora de realizar un enfrentamiento, siempre y cuando se respete la vida de los ciudadanos y los alrededores.</p>
+          <p><strong>Chalecos:</strong> Un delictual no puede portar mas de 1 chaleco en su inventario, y uno en uso, en un vehículo no puede andar mas de 1 chaleco ( Repuesto ).</p>
+          <p><strong>No esta permito el uso de la "Q" (Cubrirse o utilizar animaciones)</strong></p>
+
+          <h3>2. Entornos para realizar actividades delictuales.</h3>
+          <p>Los entornos son descripciones que informan a la administración y a las fuerzas del orden sobre las actividades delictivas que van a ocurrir. Estos entornos garantizan que el rol se desarrolle de manera equilibrada y realista, permitiendo la correcta respuesta de la policía y otros involucrados, el comando principal para esto es <code>/911</code>.</p>
+          <p>Es obligatorio enviar entornos para todas las actividades delictivas. Se debe enviar primero un aviso preguntando si hay disponibilidad policial para la actividad y luego que la policía confirme si hay disponibilidad se envía otra llamada detallando la actividad criminal.</p>
+
+          <p><strong>Importante:</strong></p>
+          <ul>
+            <li>No se puede iniciar un delito sin confirmar disponibilidad policial, excepto en robos a civiles.</li>
+            <li>Los entornos deben ser claros y realistas para mantener una experiencia de rol fluida, entornos mal descritos pueden ser sancionados y la policía tiene el derecho de ignorarlos.</li>
+          </ul>
+
+          <h3>3. Robos a civiles.</h3>
+          <p>Un robo a un civil es un asalto en el que no es necesario negociar con la policía. El objetivo principal es despojar al civil de sus pertenencias y luego mantenerse fuera del radar hasta que la situación se calme, sin involucrar directamente a las autoridades. Sin embargo, debes estar preparado para enfrentar una intensa persecución policial sin restricciones, manteniendo el control de la situación y actuando estratégicamente para evadir la captura.</p>
+
+          <h3>4. Secuestros.</h3>
+          <p>El monto máximo que se puede solicitar como rescate por un civil es de $250,000 y un máximo de $1,000,000 por policías. No se permite exigir una cantidad superior. Todo secuestro debe desarrollarse con un rol serio y realista, asegurando una buena interacción entre los involucrados y evitando abusos o situaciones forzadas. Recordar que el entorno del secuestro se manda en medio del rol.</p>
+
+          <h3>5. Ventas de dorgas.</h3>
+          <p>Toda venta de drogas debe realizarse con un buen rol y creíble, evitando interacciones forzadas o sin desarrollo lógico.</p>
+
+          <h3>6. Robos organizados.</h3>
+          <p>Los robos organizados son delitos planeados y ejecutados por un grupo de personas con una estrategia definida. A diferencia de los asaltos improvisados, estos robos requieren coordinación, roles específicos dentro del equipo y una ejecución cuidadosa para lograr el objetivo sin fallas.</p>
+          <p>A continuación una lista con toda la información correspondiente para los robos organizados que hay disponible:</p>
+          <p><strong>Importante:</strong> Para realizar cualquier actividad delictiva, primero se debe enviar un aviso consultando si hay disponibilidad policial para [Tipo de delito]. Una vez la policía confirme disponibilidad, deberán enviar el detalle completo de la actividad. Ambos mensajes pueden enviarse a través del comando <code>/911</code>.</p>
+          <p>El incumplimiento de este procedimiento puede resultar en sanciones y la policía está en su derecho de ignorar la llamada, por lo cual los atracadores no podrán realizar dicha actividad delictiva.</p>
+
+          <h4>1. Sobre las Bandas</h4>
+          <p>Las Bandas representan el escalón inicial en el mundo criminal de el Zarpe RP. Se caracterizan por su presencia activa en las calles, realizando diversas actividades ilegales para establecerse y ganarse la vida. Su enfoque principal es la acción directa y la supervivencia en el entorno urbano.</p>
+          <p><strong>Número de Miembros:</strong><br>Mínimo: 6 Miembros<br>Máximo: 12 Miembros</p>
+
+          <p><strong>Estructura Interna:</strong><br>
+            Jefe: 1 (Máximo) - Líder principal de la banda.<br>
+            Mano Derecha: 2 (Máximo) - Segundo al mando y principal apoyo del Cabecilla.<br>
+            Jefe De Sicarios: Jefe de integrantes que conforman el grueso de la banda.<br>
+            Sicarios: Miembros especializados en la distribución de sustancias ilegales.<br>
+            Camellos: Integrantes que se encargan de hacer las tareas del Jefe.
+          </p>
+
+          <p>El jefe de las bandas debe ser el único que lleve el orden y las ordenes de la misma , que se mueve , que no y que pasa con la misma.</p>
+
+          <h4>2. Normativa</h4>
+          <p><strong>Miembros:</strong> En este punto las organizaciones podrán contar con un mínimo de 6 integrantes y máximo de 12 integrantes.</p>
+          <ul>
+            <li>Investigaciones: Pueden realizar investigaciones a miembros policiales de bajo rango.</li>
+            <li>Podrán realizar actividades para una Mafia como también tener negocios en común venta de drogas/armas.</li>
+            <li>El generar negocios con una Mafia atará a la banda a la misma, cambiar la misma de mala manera puede conducir a un CK total de banda.</li>
+            <li>Podrán realizar CK a civiles, pandillas, bandas rivales o policías hasta rangos medios, pero nunca policías de altas jefaturas, a no ser que una mafia los haya enviado como sicarios. (Presentar solicitud ante un Encargado Delictivo.)</li>
+            <li>Podrán tener solo una pandilla bajo su responsabilidad.</li>
+            <li>El líder tiene derecho a realizar un CK a miembros de la misma si ellos deciden abandonarlo. (Presentar solicitud ante un Encargado Delicitivo.)</li>
+          </ul>
+
+          <h4>3. Entorno /Barrio</h4>
+          <p>Las bandas tienen un entorno a su favor, por ende, su barrio debería ser respetado una vez se tenga conocimiento del mismo. Todo estará en la responsabilidad y forma de hacerlo respetar. Además, su responsabilidad es expandirlo y protegerlo. Si un civil entra a su zona, la banda puede hacerle un rol agresivo, pero tiene prohibido hacerle DM. (Todo depende del rol que se dé).</p>
+
+          <h4>4. Investigaciones Policiales</h4>
+          <p>La policía sabe de las existencias de las bandas, y sabe el peligro que existe en la ciudad y norte, aun así</p>
+          <ul>
+            <li>No se puede hacer CK a los miembros de una organización solo por ser organización.</li>
+            <li>Solo el OIJ puede hacer investigaciones a organizaciones con el único fin de llegar a su jefe.</li>
+            <li>Solo se puede generar CK al jefe de la organización cuando este haya caído, posteriormente la organización se desmantela.</li>
+          </ul>
+          <p>Queda totalmente prohibido el farmeo o venta de drogas sin policías en la ciudad , esto conlleva un strike para la facción.</p>
+
+          <h4>7. Confrontaciones</h4>
+          <ul>
+            <li>En caso de que una banda crea poder desterrar a una organización puede hacerlo con permiso administrativo.</li>
+            <li>De no lograr derrotarlos será CK completo a todos los involucrados.</li>
+            <li>Requiere OK administrativo.</li>
+          </ul>
+
+          <h3>2. Normativa Mafia</h3>
+          <p><strong>Miembros:</strong> En este punto las organizaciones podrán contar con un mínimo de 10 integrantes y máximo de 16 integrantes.</p>
+          <ul>
+            <li>Podrán secuestrar a cualquier persona dentro de la ciudad sin importar su cargo/rol, mientras este de por medio allá un rol en medio.</li>
+            <li>Podrán realizar investigaciones a otras organizaciones o miembros de la policía de alto rango.</li>
+            <li>Podrán tener chance de conseguir un contacto y/o punto para lavado de dinero y compra de armas IC.</li>
+            <li>Podrán atacar a otra organización con motivo de eliminar competencia.</li>
+            <li>Podrán tener bandas bajo su responsabilidad, no implica la cantidad de bandas bajo su mando.</li>
+            <li>El líder tiene derecho a realizar un CK a miembros de la misma si ellos deciden abandonarlo.(Presentar primero a Encargado Delictivo.)</li>
+            <li>CK por farmear en su punto: La Mafia puede hacer CK a cualquier persona encontrada farmeando en sus puntos conocidos (Solo personas que no conozcan o no tengan vínculo con la Mafia). (Presentar solicitud ante un Encargado Delicitivo.)</li>
+          </ul>
+
+          <h4>3. Investigaciones Policiales</h4>
+          <p>La policía sabe de las existencias de las Mafias, y sabe el peligro que existe en ciudad y norte, aun así</p>
+          <ul>
+            <li>No se puede hacer CK a los miembros de una organización solo por ser organización.</li>
+            <li>Solo el OIJ puede hacer investigaciones a organizaciones con el único fin de llegar a su jefe.</li>
+            <li>Solo se puede generar CK al jefe de la organización cuando este haya caído, posteriormente la organización se desmantela.</li>
+          </ul>
+          <p>Queda totalmente prohibido el farmeo o venta de drogas sin policías en la ciudad , esto conlleva un strike para la facción.</p>
+
+          <h4>4. Distribución de la mercancía y/o sustancias Ilícitas</h4>
+          <p>Hay varios tipos de mercancía controlados por diferentes mafias y bandas, por ello se debe buscar ganar preferencia en sus productos. Si se distribuye mucha droga su valor podría caer.</p>
+
+          <h4>5. Generadores de rol ilegal</h4>
+          <p>Una Mafia puede crear roles ilegales a su gusto, por ende, buscamos que estén preparadas para moderar el rol ilícito que esta abajo como arriba de ellas. Cabe aclarar que la administración suele otorgar misiones a las mafias, estas sirven para guiarse y poder construir propias. Las mafias que no controlen o generen rol en el mundo ilegal podrían ser disueltas administrativamente.</p>
+
+          <h4>6. Continuidad</h4>
+          <p>Estas organizaciones serán perseguidas e investigadas por el OIJ, su permanencia en la cuidad dependerá del perfil bajo que mantengan sus aliados y colaboradores.</p>
+          <p>Queda totalmente prohibido el farmeo o venta de drogas sin policías en la ciudad , esto conlleva un strike para la facción.</p>
+
+          <h4>9. Confrontaciones</h4>
+          <ul>
+            <li>En caso de que una banda, mafia o cartel crea poder desterrar a una organización puede hacerlo con permiso administrativo.</li>
+            <li>De no lograr derrotarlos será CK completo a todos los involucrados.</li>
+            <li>Requiere OK administrativo.</li>
+          </ul>
+
+          <h3>3- Normativa Cartel</h3>
+          <p>Los Carteles representan la cúspide del poder ilícito en el Zarpe RP. Operan desde las sombras, manejando los hilos del crimen organizado sin mostrarse directamente al público. Su influencia se extiende a través de la supervisión de Mafias y Bandas  y la dirección estratégica de las actividades ilegales.</p>
+          <ul>
+            <li><strong>Obligación:</strong> Cada Cartel tiene la obligación de tener y cuidar al menos 1 Mafia bajo su mando, asegurando su operatividad y lealtad.</li>
+            <li><strong>Número de Miembros:</strong><br> Mínimo: 16 Miembros<br> Máximo: Ilimitado (20+ Miembros)</li>
+            <li><strong>Estructura Interna:</strong><br> Jefe: 2 (Mínimo) - Múltiples líderes que dirigen la organización.<br> SubJefe: 3 (Mínimo) - Pilares de el Cartel, coordinando grandes operaciones.<br> Sicarios: Mínimo 10 - El núcleo operativo y de influencia de el Cartel.<br> Camellos: Mínimo 5 - Encargados de las redes de distribución a gran escala o gestión de puntos de venta.</li>
+          </ul>
+          <p>El jefe de el cartel debe ser el único que lleve el orden y las ordenes de la misma , que se mueve , que no y que pasa con la misma.</p>
+
+          <p>Podrán secuestrar a cualquier persona dentro de la ciudad o norte sin importar su cargo/rol, mientras este de por medio allá un rol en medio.</p>
+          <p>Podrán realizar investigaciones a otras organizaciones o miembros de la policía de alto rango.</p>
+          <p>Podrán tener chance de conseguir un contacto y/o punto para lavado de dinero y compra de armas IC</p>
+          <p>Podrán atacar a otra organización con motivo de eliminar competencia.</p>
+          <p>Podrán tener bandas y mafias bajo su responsabilidad, no implica la cantidad de bandas bajo su mando.</p>
+          <p>El líder tiene derecho a realizar un CK a miembros de la misma si ellos deciden abandonarlo.(Presentar solicitud ante un Encargado Delictivo.)</p>
+          <p>CK por farmear en su punto: El cartel puede hacer CK a cualquier persona encontrada farmeando en sus puntos personales (Solo personas que no conozcan o no tengan vínculo con el cartel).(Presentar solicitud ante un Encargado Delictivo.)</p>
+
+          <h4>3. Investigaciones Policiales</h4>
+          <p>La policía sabe de las existencias de los carteles, y sabe el peligro que existe en ciudad y norte, aun así:</p>
+          <ul>
+            <li>No se puede hacer CK a los miembros de una organización solo por ser organización.</li>
+            <li>Solo el OIJ puede hacer investigaciones a organizaciones con el único fin de llegar a su jefe.</li>
+            <li>Solo se puede generar CK al jefe de la organización cuando este haya caído, posteriormente la organización se desmantela.</li>
+          </ul>
+          <p>Queda totalmente prohibido el farmeo o venta de drogas sin policías en la ciudad , esto conlleva un strike para la facción.</p>
+
+          <h4>5. Confrontaciones</h4>
+          <ul>
+            <li>En caso de que un cartel crea poder desterrar a una organización puede hacerlo con permiso administrativo.</li>
+            <li>De no lograr derrotarlos será CK completo a todos los involucrados.</li>
+            <li>Requiere OK administrativo.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ====== CK ====== -->
+      <section id="ck" class="section">
+        <h2 class="section-title"><span class="title-bubble">💀 Normativa Oficial de CK (Character Kill)</span></h2>
+        <div class="fade-in">
+          <p>Un CK (Character Kill) representa la muerte permanente de un personaje dentro del entorno de rol. Esta acción es irreversible y debe tratarse con la máxima seriedad y coherencia narrativa. A continuación, se detallan las normas que regulan esta acción:</p>
+
+          <h3 style="color:var(--accent-2); margin-top:12px">⚠️ 1. Irreversibilidad del CK</h3>
+          <ul>
+            <li>Una vez ejecutado un CK de manera válida, el personaje afectado no podrá ser utilizado nuevamente bajo ningún concepto.</li>
+            <li>🔁 No existe regreso, resurrección ni continuación de historia por parte del personaje.</li>
+          </ul>
+
+          <h3 style="color:var(--accent-2); margin-top:12px">📝 2. Requisitos para solicitar un CK</h3>
+          <ul>
+            <li>Debe existir un motivo de peso, coherente y bien fundamentado dentro del desarrollo del rol.</li>
+            <li>La solicitud debe hacerse a través de un ticket.</li>
+            <li>Se requiere aprobación del Staff o administración.</li>
+            <li>Debe presentarse evidencia clara del conflicto y justificación narrativa.</li>
+          </ul>
+
+          <p style="margin-top:10px"><strong>Importante:</strong> El CK es una herramienta narrativa poderosa y debe usarse con responsabilidad.</p>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <script>
+    // ====== Navegación lateral (cambia secciones y active en el menú) ======
+    const navButtons = document.querySelectorAll('.nav-btn');
+    const sections = document.querySelectorAll('.section');
+
+    function showSection(id) {
+      // scroll to section smoothly and highlight active button
+      const target = document.getElementById(id);
+      if (!target) return;
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      navButtons.forEach(b => b.classList.toggle('active', b.dataset.target === id));
+    }
+
+    navButtons.forEach(btn => {
+      btn.addEventListener('click', () => showSection(btn.dataset.target));
+    });
+
+    // keyboard nav: numbers 1-5
+    window.addEventListener('keydown', (e) => {
+      if (e.key >= '1' && e.key <= '5') {
+        const idx = Number(e.key)-1;
+        const btn = navButtons[idx];
+        if (btn) { btn.click(); }
+      }
+    });
+
+    // ====== Animaciones: aparecer sección cuando entra al viewport ======
+    const observerOptions = { root: document.querySelector('main.content'), rootMargin: '0px', threshold: 0.08 };
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          // reveal child fade-ins
+          entry.target.querySelectorAll('.fade-in').forEach((el,i) => {
+            setTimeout(()=> el.classList.add('show'), i*80);
+          });
+        }
+      });
+    }, observerOptions);
+
+    sections.forEach(sec => observer.observe(sec));
+
+    // Highlight menu based on scroll
+    const mainEl = document.querySelector('main.content');
+    mainEl.addEventListener('scroll', () => {
+      const fromTop = mainEl.scrollTop + 40;
+      sections.forEach((sec) => {
+        if (sec.offsetTop <= fromTop && sec.offsetTop + sec.offsetHeight > fromTop) {
+          const id = sec.id;
+          navButtons.forEach(b => b.classList.toggle('active', b.dataset.target === id));
+        }
+      });
+    });
+
+    // On load: ensure first section visible and fade-in applied
+    window.addEventListener('load', () => {
+      document.getElementById('basicos').classList.add('visible');
+      document.querySelectorAll('#basicos .fade-in').forEach((el, i) => setTimeout(()=> el.classList.add('show'), i*70));
+    });
+  </script>
+</body>
+</html>

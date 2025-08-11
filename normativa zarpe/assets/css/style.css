@@ -1,0 +1,47 @@
+/* Main content */
+.content {
+  margin-left: 280px; /* espacio para sidebar fijo */
+  padding: 2rem 3rem;
+  overflow-y: auto;
+  flex: 1;
+  background-color: #18181b;
+  height: 100vh;
+  scroll-behavior: smooth;
+
+  /* Asegurar contenido arriba */
+  display: block; /* o flex con align-items si quieres */
+  /* No centrar verticalmente */
+}
+
+/* Secciones ocultas y visibles */
+.section {
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  transform-origin: top left;
+  transform: scale(1);
+  box-shadow: none;
+  border-radius: 8px;
+  background-color: #2a2a35;
+  padding: 1.5rem 2rem;
+  margin-bottom: 2rem;
+  color: #d1d5db;
+  position: relative; /* para sombra y escala */
+}
+
+/* Solo la sección activa se muestra */
+.section.active {
+  opacity: 1;
+  max-height: 5000px;
+  overflow: visible;
+}
+
+/* Al pasar mouse sobre el menú, se añade este efecto en la sección */
+.section.hovered {
+  transform: scale(1.05);
+  box-shadow: 0 10px 30px rgba(44, 123, 229, 0.5);
+  z-index: 10;
+}
+
+/* Para evitar que el contenido se "baje" por centrado */
